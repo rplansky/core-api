@@ -61,7 +61,7 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * @param Request   $request
+     * @param \Illuminate\Http\Request   $request
      * @param Exception $e
      *
      * @return JsonResponse
@@ -110,7 +110,7 @@ class Handler extends ExceptionHandler
      * @param \Illuminate\Http\Request                 $request
      * @param \Illuminate\Auth\AuthenticationException $exception
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
