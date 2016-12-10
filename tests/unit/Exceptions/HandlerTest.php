@@ -1,17 +1,17 @@
 <?php
+
 namespace Boitata\Exceptions;
 
 use Exception;
 use Illuminate\Http\Request;
 use Mockery as m;
-use Psr\Log\LoggerInterface;
 use TestCase;
 
 class HandlerTest extends TestCase
 {
     public function testShouldAddCorsToApiRequests()
     {
-        $request = m::mock(Request::class . '[is]');
+        $request = m::mock(Request::class.'[is]');
         $handler = $this->app->make(Handler::class);
 
         // skip throwing errors for testing
@@ -28,7 +28,7 @@ class HandlerTest extends TestCase
 
         // Expectations
         // Actions
-        $response = $handler->render($request, new Exception);
+        $response = $handler->render($request, new Exception());
 
         // Assertions
         $headers = $response->headers;
@@ -53,7 +53,7 @@ class HandlerTest extends TestCase
 
     public function testShouldNotAddCorsToNonApiRequests()
     {
-        $request = m::mock(Request::class . '[is]');
+        $request = m::mock(Request::class.'[is]');
         $handler = $this->app->make(Handler::class);
 
         // Expectations
@@ -63,6 +63,6 @@ class HandlerTest extends TestCase
         $this->expectException(Exception::class);
 
         // Actions
-        $handler->render($request, new Exception);
+        $handler->render($request, new Exception());
     }
 }

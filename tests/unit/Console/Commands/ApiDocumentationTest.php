@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Console\Commands;
 
 use File;
@@ -13,7 +14,7 @@ class ApiDocumentationTest extends TestCase
         // Set
         $storeConfig = m::mock(Config::class);
         $command = m::mock(
-            ApiDocumentation::class . '[info,warn,error,swaggerScan,define]'
+            ApiDocumentation::class.'[info,warn,error,swaggerScan,define]'
         );
         $command->shouldAllowMockingProtectedMethods();
 
@@ -22,12 +23,12 @@ class ApiDocumentationTest extends TestCase
 
         config([
             'app' => [
-                'url' => 'http://www.boitata.dev',
+                'url'   => 'http://www.boitata.dev',
                 'debug' => true,
             ],
             'api' => [
                 'version' => '2.3.82',
-                'prefix' => 'public/utils/api',
+                'prefix'  => 'public/utils/api',
             ],
             'job_tracker' => [
                 'products' => [],
@@ -108,7 +109,7 @@ class ApiDocumentationTest extends TestCase
         // Set
         $storeConfig = m::mock(Config::class);
         $command = m::mock(
-            ApiDocumentation::class . '[info,warn,error,define,swaggerScan]'
+            ApiDocumentation::class.'[info,warn,error,define,swaggerScan]'
         );
         $command->shouldAllowMockingProtectedMethods();
 
@@ -117,12 +118,12 @@ class ApiDocumentationTest extends TestCase
 
         config([
             'app' => [
-                'url' => 'http://localhost',
+                'url'   => 'http://localhost',
                 'debug' => false,
             ],
             'api' => [
                 'version' => '1.4',
-                'prefix' => 'api',
+                'prefix'  => 'api',
             ],
             'job_tracker' => [
                 'products' => [],

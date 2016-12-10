@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Http\Middleware;
 
 use Closure;
@@ -17,11 +18,11 @@ class AuthenticateWithApiToken
      */
     public function handle($request, Closure $next)
     {
-        if (! $authorization = $request->header('authorization')) {
+        if (!$authorization = $request->header('authorization')) {
             return $this->unauthorized('Authentication required');
         }
 
-        if (! $this->authenticate($authorization)) {
+        if (!$this->authenticate($authorization)) {
             return $this->unauthorized('Invalid credentials');
         }
 
@@ -34,7 +35,7 @@ class AuthenticateWithApiToken
     /**
      * In order to authenticate to the API, the type must be 'Basic'
      * and token must match the one set on config.
-     * E.g.: `Basic d2h5IGFyZSB5b3UgZGVjcmlwdGluZyB0aGlzPyA7UA==`
+     * E.g.: `Basic d2h5IGFyZSB5b3UgZGVjcmlwdGluZyB0aGlzPyA7UA==`.
      *
      * @param string $authorization Authorization header from request
      *
@@ -43,7 +44,7 @@ class AuthenticateWithApiToken
     protected function authenticate(string $authorization) : bool
     {
         $parts = explode(' ', $authorization);
-        $type  = $parts[0] ?? null;
+        $type = $parts[0] ?? null;
         $token = $parts[1] ?? null;
 
         return count($parts) === 2 &&
@@ -54,7 +55,7 @@ class AuthenticateWithApiToken
     /**
      * Validate token using http basic pattern: `<username>:<password>`,
      * encoded with base64 and where <username> represents the token
-     * and <password> must be blank. (colon is required)
+     * and <password> must be blank. (colon is required).
      *
      * @param string $token
      *
@@ -62,7 +63,7 @@ class AuthenticateWithApiToken
      */
     protected function validateToken(string $token) : bool
     {
-        $validToken = base64_encode(config('api.auth_token') . ':');
+        $validToken = base64_encode(config('api.auth_token').':');
 
         return $token === $validToken;
     }

@@ -1,9 +1,9 @@
 <?php
+
 namespace Boitata\Http\Middleware;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Mockery as m;
 use TestCase;
 
 class AuthenticateWithApiTokenTest extends TestCase
@@ -15,11 +15,11 @@ class AuthenticateWithApiTokenTest extends TestCase
     {
         // Set
         config(['api.auth_token' => 'v4l1d-t0k3n']);
-        $request = new Request;
+        $request = new Request();
         $request->headers->set('authorization', $authHeader);
-        $response = new JsonResponse;
+        $response = new JsonResponse();
 
-        $middleware = new AuthenticateWithApiToken;
+        $middleware = new AuthenticateWithApiToken();
 
         // Actions
         $this->response = $middleware->handle($request, function () use ($response) {
@@ -38,11 +38,11 @@ class AuthenticateWithApiTokenTest extends TestCase
     {
         // Set
         config(['api.auth_token' => 'v4l1d-t0k3n']);
-        $request = new Request;
+        $request = new Request();
         $request->headers->set('authorization', $authHeader);
-        $response = new JsonResponse;
+        $response = new JsonResponse();
 
-        $middleware = new AuthenticateWithApiToken;
+        $middleware = new AuthenticateWithApiToken();
 
         // Actions
         $this->response = $middleware->handle($request, function () use ($response) {
@@ -63,7 +63,7 @@ class AuthenticateWithApiTokenTest extends TestCase
                 'Authentication required',
             ],
             'valid token but invalid type'                                           => [
-                'bearer ' . base64_encode('v4l1d-t0k3n:'),
+                'bearer '.base64_encode('v4l1d-t0k3n:'),
                 'Invalid credentials',
             ],
             'valid type, valid token but not encoded nor concatenated with password' => [
@@ -75,11 +75,11 @@ class AuthenticateWithApiTokenTest extends TestCase
                 'Invalid credentials',
             ],
             'valid type, invalid token'                                              => [
-                'Basic ' . base64_encode('invalid:'),
+                'Basic '.base64_encode('invalid:'),
                 'Invalid credentials',
             ],
             'valid token and type but with more characters after'                    => [
-                'bearer ' . base64_encode('v4l1d-t0k3n:') . ' invalid',
+                'bearer '.base64_encode('v4l1d-t0k3n:').' invalid',
                 'Invalid credentials',
             ],
         ];
@@ -89,13 +89,13 @@ class AuthenticateWithApiTokenTest extends TestCase
     {
         return [
             'lowercase type'      => [
-                'basic ' . base64_encode('v4l1d-t0k3n:'),
+                'basic '.base64_encode('v4l1d-t0k3n:'),
             ],
             'uppercase type'      => [
-                'BASIC ' . base64_encode('v4l1d-t0k3n:'),
+                'BASIC '.base64_encode('v4l1d-t0k3n:'),
             ],
             'scrambled case type' => [
-                'BaSiC ' . base64_encode('v4l1d-t0k3n:'),
+                'BaSiC '.base64_encode('v4l1d-t0k3n:'),
             ],
         ];
     }

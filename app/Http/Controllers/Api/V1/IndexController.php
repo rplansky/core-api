@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Http\Controllers\Api\V1;
 
 use Boitata\Http\Controllers\Api\Controller;
@@ -85,11 +86,11 @@ class IndexController extends Controller
      */
     public function root()
     {
-        $documentationAction = action('\\' . static::class . '@documentation');
+        $documentationAction = action('\\'.static::class.'@documentation');
 
         return $this->respond([
-            'name' => $this->apiName,
-            'message' => 'API is healthy',
+            'name'          => $this->apiName,
+            'message'       => 'API is healthy',
             'documentation' => $documentationAction,
         ]);
     }

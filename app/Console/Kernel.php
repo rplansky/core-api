@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Console;
 
 use Boitata\Console\Commands\ApiDocumentation;
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        ApiDocumentation::class
+        ApiDocumentation::class,
     ];
 
     /**
@@ -34,6 +35,5 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        return;
     }
 }

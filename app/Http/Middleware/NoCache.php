@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Http\Middleware;
 
 use Closure;
@@ -13,8 +14,8 @@ class NoCache
     /**
      * Handle the request.
      *
-     * @param  Request $request
-     * @param  Closure $next
+     * @param Request $request
+     * @param Closure $next
      *
      * @return mixed
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Http\Controllers\Api;
 
 use Mockery as m;
@@ -6,14 +7,13 @@ use TestCase;
 
 class ControllerTest extends TestCase
 {
-
     public function testShouldRespondWithDefaultParameters()
     {
         // Set
         $controller = m::mock(Controller::class);
         $data = [
             'user' => [
-                'name' => 'John',
+                'name'    => 'John',
                 'surName' => 'Snow',
             ],
         ];
@@ -32,7 +32,7 @@ class ControllerTest extends TestCase
         $controller = m::mock(Controller::class);
         $data = [
             'user' => [
-                'name' => 'John',
+                'name'    => 'John',
                 'surName' => 'Snow',
             ],
         ];

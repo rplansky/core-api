@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +18,6 @@ Route::group(
     ],
     function () {
         Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
-
             Route::any('/', 'IndexController@root');
             Route::get('/documentation', 'IndexController@documentation');
         });

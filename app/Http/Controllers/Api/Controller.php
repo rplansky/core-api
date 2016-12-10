@@ -3,7 +3,6 @@
 namespace Boitata\Http\Controllers\Api;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -15,10 +14,10 @@ class Controller extends BaseController
      * Return a new JSON response from the application.
      * It wraps default JSON response to allow a future use of Transformers and Serializers.
      *
-     * @param  string|array $data
-     * @param  int          $status
-     * @param  array        $headers
-     * @param  int          $options
+     * @param string|array $data
+     * @param int          $status
+     * @param array        $headers
+     * @param int          $options
      *
      * @return JsonResponse
      */
@@ -26,6 +25,7 @@ class Controller extends BaseController
     {
         return response()->json($data, $status, $headers, $options);
     }
+
     /**
      * Return a new JSON response from the application with validation errors.
      *
@@ -47,10 +47,10 @@ class Controller extends BaseController
      *   @SWG\Schema(ref="#/definitions/ValidationErrors")
      * ),
      *
-     * @param  string|array $errors
-     * @param  int          $status
-     * @param  array        $headers
-     * @param  int          $options
+     * @param string|array $errors
+     * @param int          $status
+     * @param array        $headers
+     * @param int          $options
      *
      * @return JsonResponse
      */

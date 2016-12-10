@@ -41,11 +41,12 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         } else {
             $args = (array) $args;
         }
+
         return $methodObj->invokeArgs($obj, $args);
     }
 
     /**
-     * Assert that response is JSON and matches $expected
+     * Assert that response is JSON and matches $expected.
      *
      * @param array|object $expected
      */
