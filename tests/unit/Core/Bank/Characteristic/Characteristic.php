@@ -6,7 +6,7 @@ class Characteristic extends \PHPUnit_Framework_TestCase
 {
     public function testCharacteristicShouldBeEmbeddedDocument()
     {
-        $characteristic = new Characteristic();
+        $characteristic = new self();
 
         $this->assertNull($characteristic->getCollectionName());
     }
