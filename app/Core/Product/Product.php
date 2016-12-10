@@ -1,13 +1,15 @@
 <?php
+
 namespace Boitata\Core\Product;
 
 use Boitata\Core\Bank\Characteristic\Characteristic;
 use MongolidLaravel\MongolidModel;
 
-class Product extends MongolidModel {
-
+class Product extends MongolidModel
+{
     /**
      * Collection's name.
+     *
      * @var string
      */
     protected $collection = 'products';
