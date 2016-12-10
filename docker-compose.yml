@@ -8,6 +8,8 @@ services:
       - es
       - redis
       - beanstalkd
+    links:
+      - db
     volumes:
       - .:/var/www/html
       - ~/.config/psysh:/root/.config/psysh
@@ -23,7 +25,8 @@ services:
     build: docker/mongo
     volumes:
       - db:/data/db
-      - .:/var/www/html
+    ports:
+      - "27017:27017"
 
   es:
     image: yvess/alpine-elasticsearch

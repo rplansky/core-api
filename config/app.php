@@ -159,6 +159,8 @@ return [
          * Package Service Providers...
          */
 
+        MongolidLaravel\MongolidServiceProvider::class,
+
         //
 
         /*
