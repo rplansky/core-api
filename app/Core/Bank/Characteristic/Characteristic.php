@@ -12,4 +12,14 @@ class Characteristic extends MongolidModel
      * @var null
      */
     protected $collection = null;
+
+    /**
+     * Returns characteristic's name.
+     *
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }
