@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  web:
+    build: docker/web
+    depends_on:
+      - db
+      - es
+      - redis
+      - beanstalkd
+    volumes:
+      - .:/var/www/html
+      - ~/.config/psysh:/root/.config/psysh
+    ports:
+      - "8000:80"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "36379:6379"
+
+  db:
+    build: docker/mongo
+    volumes:
+      - db:/data/db
+      - .:/var/www/html
+
+  es:
+    image: yvess/alpine-elasticsearch
+    volumes:
+      - es:/var/services/data/elasticsearch
+    ports:
+      - "39200:9200"
+      - "39300:9300"
+
+  beanstalkd:
+    image: lcgc/beanstalkd
+
+volumes:
+  es:
+  db:
