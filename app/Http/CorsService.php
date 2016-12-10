@@ -25,7 +25,7 @@ class CorsService
      * @param Request               $request
      * @param Response|JsonResponse $response
      *
-     * @return Response
+     * @return Illuminate\Http\Response
      */
     public function handle(Request $request, $response)
     {
@@ -50,14 +50,14 @@ class CorsService
      *
      * @param Request $request
      *
-     * @return bool|string
+     * @return string
      */
     protected function getOrigin(Request $request)
     {
         $origin = $request->headers->get('Origin', false);
 
         if ($origin === $request->getSchemeAndHttpHost()) {
-            return false;
+            return '';
         }
 
         return $origin;

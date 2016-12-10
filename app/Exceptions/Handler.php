@@ -64,7 +64,7 @@ class Handler extends ExceptionHandler
      * @param \Illuminate\Http\Request $request
      * @param Exception                $e
      *
-     * @return JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     protected function renderForApi($request, Exception $e)
     {
@@ -107,12 +107,9 @@ class Handler extends ExceptionHandler
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param \Illuminate\Http\Request                 $request
-     * @param \Illuminate\Auth\AuthenticationException $exception
-     *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function unauthenticated($request, AuthenticationException $exception)
+    protected function unauthenticated()
     {
         return response()->json(['error' => 'Unauthenticated.'], 401);
     }
