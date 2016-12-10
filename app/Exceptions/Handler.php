@@ -9,8 +9,8 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -45,20 +45,23 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Exception $exception
-     * @return \Illuminate\Http\Response
+     * @param \Exception               $exception
+     *
      * @throws Exception
+     *
+     * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
         if ('testing' === app('env')) {
             throw $exception;
         }
+
         return $this->renderForApi($request, $exception);
     }
 
     /**
-     * @param Request $request
+     * @param Request   $request
      * @param Exception $e
      *
      * @return JsonResponse
@@ -81,14 +84,14 @@ class Handler extends ExceptionHandler
                 $payload,
                 [
                     'exception' => [
-                        'class' => get_class($e),
+                        'class'   => get_class($e),
                         'message' => $e->getMessage(),
-                        'file' => $e->getFile(),
-                        'line' => $e->getLine(),
-                        'trace' => array_slice($e->getTrace(), 0, 10),
+                        'file'    => $e->getFile(),
+                        'line'    => $e->getLine(),
+                        'trace'   => array_slice($e->getTrace(), 0, 10),
                     ],
                     'request' => [
-                        'url' => $request->url(),
+                        'url'   => $request->url(),
                         'input' => $request->input(),
                     ],
                 ]
@@ -104,7 +107,7 @@ class Handler extends ExceptionHandler
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request                 $request
      * @param \Illuminate\Auth\AuthenticationException $exception
      *
      * @return \Illuminate\Http\Response

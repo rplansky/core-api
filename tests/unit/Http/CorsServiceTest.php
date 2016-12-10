@@ -1,10 +1,10 @@
 <?php
+
 namespace Boitata\Http;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Mockery as m;
 use TestCase;
 
 class CorsServiceTest extends TestCase
@@ -21,10 +21,10 @@ class CorsServiceTest extends TestCase
     public function testShouldAddCorsHeaderToValidOrigins($origin, $expected)
     {
         // Set
-        $service = new CorsService;
-        $request = new Request;
+        $service = new CorsService();
+        $request = new Request();
         $request->headers->set('Origin', $origin);
-        $response = new Response;
+        $response = new Response();
 
         // Actions
         $response = $service->handle($request, $response);
@@ -55,9 +55,9 @@ class CorsServiceTest extends TestCase
     public function testShouldSkipCorsHeaderIfOriginIsEqualToHost()
     {
         // Set
-        $service  = new CorsService;
-        $request  = new Request;
-        $response = new JsonResponse;
+        $service = new CorsService();
+        $request = new Request();
+        $response = new JsonResponse();
 
         $request->headers->set('Origin', 'http://foo.bar.com.br');
         $request->headers->set('Host', 'foo.bar.com.br');
@@ -77,10 +77,10 @@ class CorsServiceTest extends TestCase
     public function testShouldAddCorsHeaderToMappedSearchDomainWhenOnStaging()
     {
         // Set
-        $service  = new CorsService;
-        $request  = new Request;
-        $response = new Response;
-        $origin   = 'https://john.foo.bar.com.br';
+        $service = new CorsService();
+        $request = new Request();
+        $response = new Response();
+        $origin = 'https://john.foo.bar.com.br';
         $request->headers->set('Origin', $origin);
         config(['app.url' => 'foo.bar.com.br/']);
 

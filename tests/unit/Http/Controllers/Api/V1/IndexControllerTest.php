@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Http\Controllers\Api\V1;
 
 use File;
@@ -15,9 +16,9 @@ class IndexControllerTest extends TestCase
         $expected = [
             'name'          => 'Boitata API',
             'message'       => 'API is healthy',
-            'documentation' => action('\\' . IndexController::class . '@documentation'),
+            'documentation' => action('\\'.IndexController::class.'@documentation'),
         ];
-        $this->action('GET', '\\' . IndexController::class . '@root');
+        $this->action('GET', '\\'.IndexController::class.'@root');
 
         $this->assertResponseStatus(200);
         $this->seeJson($expected);
@@ -29,7 +30,7 @@ class IndexControllerTest extends TestCase
         $this->app->instance('env', 'local');
 
         $documentationPath = storage_path('app/public-api-documentation.json');
-        $expected          = [
+        $expected = [
             'message' => 'Under Maintenance',
         ];
 
@@ -41,7 +42,7 @@ class IndexControllerTest extends TestCase
         Log::shouldReceive('warning')
             ->once();
 
-        $this->action('GET', '\\' . IndexController::class . '@documentation');
+        $this->action('GET', '\\'.IndexController::class.'@documentation');
 
         $this->assertResponseStatus(500);
         $this->seeJson($expected);
@@ -50,8 +51,8 @@ class IndexControllerTest extends TestCase
     public function testShouldGetDocumentation()
     {
         $documentationPath = storage_path('app/public-api-documentation.json');
-        $fileContent       = '{"swagger": "content"}';
-        $expected          = ['swagger' => 'content'];
+        $fileContent = '{"swagger": "content"}';
+        $expected = ['swagger' => 'content'];
 
         File::shouldReceive('exists')
             ->once()
@@ -68,7 +69,7 @@ class IndexControllerTest extends TestCase
 
         Log::shouldReceive('error');
 
-        $this->action('GET', '\\' . IndexController::class . '@documentation');
+        $this->action('GET', '\\'.IndexController::class.'@documentation');
 
         $this->assertResponseOk();
         $this->seeJson($expected);

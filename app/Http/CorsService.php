@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Http;
 
 use Illuminate\Http\JsonResponse;
@@ -14,7 +15,7 @@ class CorsService
      * @var array
      */
     protected $allowedOrigins = [
-        'https://boitata-publication-platform.github.io'
+        'https://boitata-publication-platform.github.io',
     ];
 
     /**
@@ -87,11 +88,11 @@ class CorsService
      */
     protected function isInternalOrigin(string $origin)
     {
-        $appUrl     = trim(config('app.url'), '/');
+        $appUrl = trim(config('app.url'), '/');
         $parsedHost = preg_replace('/(https?:\/\/)?(www\.)?/', '', $appUrl);
         $parsedHost = preg_replace('/:\d+/', '', $parsedHost);
 
-        $acceptedOrigins = '/^https?:\/\/(\w+\.)?' . $parsedHost . '$/i';
+        $acceptedOrigins = '/^https?:\/\/(\w+\.)?'.$parsedHost.'$/i';
 
         return (bool) preg_match($acceptedOrigins, $origin);
     }

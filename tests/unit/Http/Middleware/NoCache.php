@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Http\Middleware;
 
 use Illuminate\Http\Request;
@@ -7,14 +8,14 @@ use Mockery as m;
 use TestCase;
 
 /**
- * Test case for no-cache filter
+ * Test case for no-cache filter.
  */
-class NoCacheTest extends TestCase
+class NoCache extends TestCase
 {
     public function testHandleShouldSendNoCacheHeader()
     {
-        $middleware = new NoCache;
-        $response   = m::mock(Response::class);
+        $middleware = new NoCache();
+        $response = m::mock(Response::class);
 
         $response->shouldReceive('header')
             ->with('Cache-Control', 'no-cache,no-store,max-age=0')
@@ -23,7 +24,7 @@ class NoCacheTest extends TestCase
 
         $this->assertTrue(
             $middleware->handle(
-                new Request,
+                new Request(),
                 function () use ($response) {
                     return $response;
                 }

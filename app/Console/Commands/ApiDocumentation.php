@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Console\Commands;
 
 use File;
@@ -34,7 +35,7 @@ class ApiDocumentation extends Command
     protected $pathsToScan = [
         'app/public-api-documentation.json' => [
             ['app'],
-        ]
+        ],
     ];
 
     /**
@@ -72,14 +73,14 @@ class ApiDocumentation extends Command
         $appUrl = $this->buildApiUrl();
 
         $configs = [
-            'API_HOST' => $appUrl,
-            'API_SCHEME' => $scheme,
-            'API_VERSION' => config('api.version'),
-            'API_BASE_PATH' => $this->buildBasePath(),
-            'BOITATA_API_SCHEME' => $scheme,
-            'BOITATA_API_HOST' => $appUrl,
+            'API_HOST'              => $appUrl,
+            'API_SCHEME'            => $scheme,
+            'API_VERSION'           => config('api.version'),
+            'API_BASE_PATH'         => $this->buildBasePath(),
+            'BOITATA_API_SCHEME'    => $scheme,
+            'BOITATA_API_HOST'      => $appUrl,
             'BOITATA_API_BASE_PATH' => '/boitata/api/v1',
-            'BOITATA_API_VERSION' => '1.0.0',
+            'BOITATA_API_VERSION'   => '1.0.0',
         ];
 
         array_map([$this, 'define'], array_keys($configs), $configs);

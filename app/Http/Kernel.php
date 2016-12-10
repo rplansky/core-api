@@ -1,4 +1,5 @@
 <?php
+
 namespace Boitata\Http;
 
 use Boitata\Http\Middleware\AuthenticateWithApiToken;
