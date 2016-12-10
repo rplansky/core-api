@@ -1,19 +1,20 @@
 <?php
+
 namespace Boitata\Core\Product;
 
 use ArrayIterator;
 use Boitata\Core\Bank\Characteristic\Characteristic;
-use PHPUnit_Framework_TestCase;
 use Mockery as m;
+use PHPUnit_Framework_TestCase;
 
 class ProductTest extends PHPUnit_Framework_TestCase
 {
     public function testProductShouldHaveCharacteristics()
     {
         // Range
-        $product = m::mock(Product::class . '[embedsMany]');
+        $product = m::mock(Product::class.'[embedsMany]');
         $product->shouldAllowMockingProtectedMethods();
-        $collection = new ArrayIterator;
+        $collection = new ArrayIterator();
 
         // Expectations
         $product->shouldReceive('embedsMany')
