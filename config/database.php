@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -43,6 +43,16 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
+
+    'mongodb' => [
+        'default' => [
+            'host'     => env('DB_HOST', '0.0.0.0'),
+            'port'     => env('DB_PORT_NUMBER', 27017),
+            'database' => env('DB_DATABASE', 'my_database'),
+            'username' => env('DB_USERNAME', ''),
+            'password' => env('DB_PASSWORD', ''),
+        ],
+    ],
 
     'connections' => [
 
@@ -77,16 +87,6 @@ return [
             'prefix'   => '',
             'schema'   => 'public',
             'sslmode'  => 'prefer',
-        ],
-
-        'mongodb' => [
-            'default' => [
-                'host'     => env('DB_HOST', '0.0.0.0'),
-                'port'     => env('DB_PORT_NUMBER', 27017),
-                'database' => env('DB_DATABASE', 'my_database'),
-                'username' => env('DB_USERNAME', ''),
-                'password' => env('DB_PASSWORD', ''),
-            ],
         ],
     ],
 
