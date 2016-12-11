@@ -6,13 +6,15 @@ use Exception;
 use Illuminate\Http\Request;
 use Mockery as m;
 use TestCase;
+use WithFramework;
 
 class HandlerTest extends TestCase
 {
-    use \WithFramework;
+    use WithFramework;
 
     public function testShouldAddCorsToApiRequests()
     {
+        // Set
         $request = m::mock(Request::class.'[is]');
         $handler = $this->app->make(Handler::class);
 
@@ -24,15 +26,13 @@ class HandlerTest extends TestCase
         $request->headers->set('Host', 'www.foo.com.br');
         $request->headers->set('Origin', $origin);
         $apiPrefix = 'public/api';
-        $internalApiPrefix = 'boitata/api';
 
         config(['api.prefix' => $apiPrefix]);
 
-        // Expectations
-        // Actions
+        // Act
         $response = $handler->render($request, new Exception());
 
-        // Assertions
+        // Assert
         $headers = $response->headers;
         $this->assertTrue($headers->has('Access-Control-Allow-Origin'));
         $this->assertTrue($headers->has('Access-Control-Allow-Credentials'));
@@ -55,16 +55,17 @@ class HandlerTest extends TestCase
 
     public function testShouldNotAddCorsToNonApiRequests()
     {
+        // Set
         $request = m::mock(Request::class.'[is]');
         $handler = $this->app->make(Handler::class);
 
-        // Expectations
+        // Expect
         $request->shouldReceive('is')
             ->never();
 
         $this->expectException(Exception::class);
 
-        // Actions
+        // Act
         $handler->render($request, new Exception());
     }
 }

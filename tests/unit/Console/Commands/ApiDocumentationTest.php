@@ -6,10 +6,11 @@ use File;
 use Kameleon\Context\Config;
 use Mockery as m;
 use TestCase;
+use WithFramework;
 
 class ApiDocumentationTest extends TestCase
 {
-    use \WithFramework;
+    use WithFramework;
 
     public function testShouldHandleCommandWithSuccess()
     {
@@ -39,7 +40,7 @@ class ApiDocumentationTest extends TestCase
 
         $this->app->instance(Config::class, $storeConfig);
 
-        // Expectations
+        // Expect
         $command->shouldReceive('swaggerScan')
             ->once()
             ->with(
@@ -99,10 +100,10 @@ class ApiDocumentationTest extends TestCase
             ->with($path1, $scan1)
             ->andReturn(123);
 
-        // Actions
+        // Act
         $result = $command->handle();
 
-        // Assertions
+        // Assert
         $this->assertTrue($result);
     }
 
@@ -134,7 +135,7 @@ class ApiDocumentationTest extends TestCase
 
         $this->app->instance(Config::class, $storeConfig);
 
-        // Expectations
+        // Expect
         $command->shouldReceive('swaggerScan')
             ->once()
             ->with(
@@ -193,10 +194,10 @@ class ApiDocumentationTest extends TestCase
             ->with($filePath1, $scanResponse1)
             ->andReturn(0);
 
-        // Actions
+        // Act
         $result = $command->handle();
 
-        // Assertions
+        // Assert
         $this->assertFalse($result);
     }
 }

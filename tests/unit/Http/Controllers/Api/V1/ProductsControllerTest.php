@@ -7,13 +7,15 @@ use Boitata\Http\Controllers\Api\Transformers\Product as ProductTransformer;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use TestCase;
 use Mockery as m;
+use WithFramework;
 
 class ProductsControllerTest extends TestCase
 {
-    use WithoutMiddleware, \WithFramework;
+    use WithoutMiddleware, WithFramework;
 
     public function testGetProductInformation()
     {
+        // Set
         $repository = m::mock(Repository::class);
         $product = new Product;
         $transformer = m::mock(ProductTransformer::class);
@@ -27,6 +29,7 @@ class ProductsControllerTest extends TestCase
             ]
         ];
 
+        // Expect
         $repository->shouldReceive('firstOrFail')
             ->once()
             ->andReturn($product);
@@ -38,7 +41,10 @@ class ProductsControllerTest extends TestCase
         $this->app->instance(Repository::class, $repository);
         $this->app->instance(ProductTransformer::class, $transformer);
 
+        // Act
         $this->call('GET', "/api/v1/product/{$id}");
+
+        // Assert
         $this->assertJsonResponse($response);
     }
 }

@@ -6,10 +6,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use TestCase;
+use WithFramework;
 
 class CorsServiceTest extends TestCase
 {
-    use \WithFramework;
+    use WithFramework;
 
     public function setUp()
     {
@@ -28,10 +29,10 @@ class CorsServiceTest extends TestCase
         $request->headers->set('Origin', $origin);
         $response = new Response();
 
-        // Actions
+        // Act
         $response = $service->handle($request, $response);
 
-        // Assertions
+        // Assert
         $headers = $response->headers;
         if ($expected) {
             $this->assertTrue($headers->has('Access-Control-Allow-Origin'));
@@ -64,10 +65,10 @@ class CorsServiceTest extends TestCase
         $request->headers->set('Origin', 'http://foo.bar.com.br');
         $request->headers->set('Host', 'foo.bar.com.br');
 
-        // Actions
+        // Act
         $response = $service->handle($request, $response);
 
-        // Assertions
+        // Assert
         $headers = $response->headers;
         $this->assertFalse($headers->has('Access-Control-Allow-Origin'));
         $this->assertFalse($headers->has('Access-Control-Allow-Credentials'));
@@ -86,10 +87,10 @@ class CorsServiceTest extends TestCase
         $request->headers->set('Origin', $origin);
         config(['app.url' => 'foo.bar.com.br/']);
 
-        // Actions
+        // Act
         $response = $service->handle($request, $response);
 
-        // Assertions
+        // Assert
         $headers = $response->headers;
         $this->assertTrue($headers->has('Access-Control-Allow-Origin'));
         $this->assertTrue($headers->has('Access-Control-Allow-Credentials'));

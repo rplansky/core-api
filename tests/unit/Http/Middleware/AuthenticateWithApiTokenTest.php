@@ -5,10 +5,11 @@ namespace Boitata\Http\Middleware;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use TestCase;
+use WithFramework;
 
 class AuthenticateWithApiTokenTest extends TestCase
 {
-    use \WithFramework;
+    use WithFramework;
 
     /**
      * @dataProvider getWrongAuthHeaders
@@ -23,12 +24,12 @@ class AuthenticateWithApiTokenTest extends TestCase
 
         $middleware = new AuthenticateWithApiToken();
 
-        // Actions
+        // Act
         $this->response = $middleware->handle($request, function () use ($response) {
             return $response;
         });
 
-        // Assertions
+        // Assert
         $this->assertResponseStatus(401);
         $this->assertJsonResponse(['message' => $expected]);
     }
@@ -46,12 +47,12 @@ class AuthenticateWithApiTokenTest extends TestCase
 
         $middleware = new AuthenticateWithApiToken();
 
-        // Actions
+        // Act
         $this->response = $middleware->handle($request, function () use ($response) {
             return $response;
         });
 
-        // Assertions
+        // Assert
         $this->assertResponseOk();
         $this->assertEquals($response, $this->response);
         $this->assertNull($request->header('authorization'));

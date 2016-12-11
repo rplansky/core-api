@@ -12,18 +12,18 @@ class ProductTest extends TestCase
 {
     public function testProductShouldHaveCharacteristics()
     {
-        // Range
+        // Set
         $product = m::mock(Product::class.'[embedsMany]');
         $product->shouldAllowMockingProtectedMethods();
         $collection = new ArrayIterator();
 
-        // Expectations
+        // Expect
         $product->shouldReceive('embedsMany')
             ->with(Characteristic::class, 'characteristics')
             ->once()
             ->andReturn($collection);
 
-        // Assertions
+        // Assert
         $this->assertEquals($collection, $product->characteristics());
     }
 }

@@ -10,6 +10,7 @@ class ProductTest extends TestCase
 
     public function testShouldPrepareProductData()
     {
+        // Set
         $product = m::mock(ProductCore::class);
         $transformer = new Product();
 
@@ -18,6 +19,7 @@ class ProductTest extends TestCase
             'name' => 'foo'
         ];
 
+        // Expect
         $product->shouldReceive('getName')
             ->once()
             ->andReturn('foo');
@@ -26,6 +28,7 @@ class ProductTest extends TestCase
             ->once()
             ->andReturn('id');
 
+        // Assert
         $this->assertEquals($expected, $transformer->transform($product));
     }
 }

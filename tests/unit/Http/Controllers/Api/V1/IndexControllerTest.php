@@ -6,26 +6,32 @@ use File;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Log;
 use TestCase;
+use WithFramework;
 
 class IndexControllerTest extends TestCase
 {
-    use WithoutMiddleware, \WithFramework;
+    use WithoutMiddleware, WithFramework;
 
     public function testShouldGetRoot()
     {
+        // Set
         $expected = [
             'name'          => 'Boitata API',
             'message'       => 'API is healthy',
             'documentation' => action('\\'.IndexController::class.'@documentation'),
         ];
+
+        // Act
         $this->action('GET', '\\'.IndexController::class.'@root');
 
+        // Assert
         $this->assertResponseStatus(200);
         $this->seeJson($expected);
     }
 
     public function testShouldNotGetDocumentationWhenNotGenerated()
     {
+        // Set
         // skip throwing errors for testing
         $this->app->instance('env', 'local');
 
@@ -34,6 +40,7 @@ class IndexControllerTest extends TestCase
             'message' => 'Under Maintenance',
         ];
 
+        // Expect
         File::shouldReceive('exists')
             ->once()
             ->with($documentationPath)
@@ -42,18 +49,22 @@ class IndexControllerTest extends TestCase
         Log::shouldReceive('warning')
             ->once();
 
+        // Act
         $this->action('GET', '\\'.IndexController::class.'@documentation');
 
+        // Assert
         $this->assertResponseStatus(500);
         $this->seeJson($expected);
     }
 
     public function testShouldGetDocumentation()
     {
+        // Set
         $documentationPath = storage_path('app/public-api-documentation.json');
         $fileContent = '{"swagger": "content"}';
         $expected = ['swagger' => 'content'];
 
+        // Expect
         File::shouldReceive('exists')
             ->once()
             ->with($documentationPath)
@@ -69,8 +80,10 @@ class IndexControllerTest extends TestCase
 
         Log::shouldReceive('error');
 
+        // Act
         $this->action('GET', '\\'.IndexController::class.'@documentation');
 
+        // Assert
         $this->assertResponseOk();
         $this->seeJson($expected);
     }

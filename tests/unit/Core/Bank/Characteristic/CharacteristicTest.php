@@ -2,18 +2,22 @@
 
 namespace Boitata\Core\Bank\Characteristic;
 
-class CharacteristicTest extends \TestCase
+use TestCase;
+
+class CharacteristicTest extends TestCase
 {
     public function testCharacteristicShouldBeEmbeddedDocument()
     {
+        // Set
         $characteristic = new Characteristic();
 
+        // Assert
         $this->assertNull($characteristic->getCollectionName());
     }
 
     public function testCharacteristicShouldHaveName()
     {
-        // Range
+        // Set
         $characteristic = new Characteristic();
         $name = 'Voltage';
 
@@ -26,6 +30,7 @@ class CharacteristicTest extends \TestCase
 
     public function testCharacteristicHaveTheRightRulesToBeValid()
     {
+        // Set
         $rules = [
             'name' => 'required',
             'type' => 'required|in:float,int,string,option,regex',
@@ -35,6 +40,7 @@ class CharacteristicTest extends \TestCase
             'regexExpression' => 'required_if:type,regex',
         ];
 
+        // Assert
         $this->assertSame($rules, (new Characteristic())->rules);
     }
 }

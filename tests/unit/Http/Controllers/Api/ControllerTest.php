@@ -4,10 +4,11 @@ namespace Boitata\Http\Controllers\Api;
 
 use Mockery as m;
 use TestCase;
+use WithFramework;
 
 class ControllerTest extends TestCase
 {
-    use \WithFramework;
+    use WithFramework;
 
     public function testShouldRespondWithDefaultParameters()
     {
@@ -20,10 +21,10 @@ class ControllerTest extends TestCase
             ],
         ];
 
-        // Actions
+        // Act
         $this->response = $this->callProtected($controller, 'respond', [$data]);
 
-        // Assertions
+        // Assert
         $this->assertResponseOk();
         $this->assertJsonResponse($data);
     }
@@ -40,10 +41,10 @@ class ControllerTest extends TestCase
         ];
         $headers = ['Accept' => 'text/json-123'];
 
-        // Actions
+        // Act
         $this->response = $this->callProtected($controller, 'respond', [$data, 201, ['Accept' => 'text/json-123']]);
 
-        // Assertions
+        // Assert
         $this->assertResponseStatus(201);
         $this->assertJsonResponse($data);
         $this->assertEquals($headers['Accept'], $this->response->headers->get('accept'));
@@ -59,10 +60,10 @@ class ControllerTest extends TestCase
             ],
         ];
 
-        // Actions
+        // Act
         $this->response = $this->callProtected($controller, 'respondWithErrors', [$errors]);
 
-        // Assertions
+        // Assert
         $this->assertResponseStatus(422);
         $this->assertJsonResponse(compact('errors'));
     }
@@ -78,10 +79,10 @@ class ControllerTest extends TestCase
         ];
         $headers = ['Accept' => 'text/json-123'];
 
-        // Actions
+        // Act
         $this->response = $this->callProtected($controller, 'respondWithErrors', [$errors, 403, $headers]);
 
-        // Assertions
+        // Assert
         $this->assertResponseStatus(403);
         $this->assertJsonResponse(compact('errors'));
         $this->assertEquals($headers['Accept'], $this->response->headers->get('accept'));
