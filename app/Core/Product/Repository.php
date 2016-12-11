@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: xps
- * Date: 10/12/16
- * Time: 19:25
- */
-
 namespace Boitata\Core\Product;
 
 /**
