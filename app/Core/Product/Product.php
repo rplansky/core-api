@@ -40,4 +40,14 @@ class Product extends MongolidModel
     {
         return $this->name;
     }
+
+    /**
+     * Returns the product id.
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return (string) $this->_id;
+    }
 }

@@ -20,6 +20,8 @@ Route::group(
         Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
             Route::any('/', 'IndexController@root');
             Route::get('/documentation', 'IndexController@documentation');
+
+            Route::get('/product/{id}', 'ProductsController@show');
         });
 
         Route::any('/', 'IndexController@root');
