@@ -1,9 +1,14 @@
 <?php
-
 namespace Boitata\Core\Bank\Characteristic;
 
 use MongolidLaravel\MongolidModel;
 
+/**
+ * Class Characteristic
+ * @package Boitata\Core\Bank\Characteristic
+ *
+ * This model is responsible to have all informations about products and contents.
+ */
 class Characteristic extends MongolidModel
 {
     /**
