@@ -9,7 +9,7 @@ use TestCase;
 
 class IndexControllerTest extends TestCase
 {
-    use WithoutMiddleware;
+    use WithoutMiddleware, \WithFramework;
 
     public function testShouldGetRoot()
     {

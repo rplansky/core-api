@@ -1,5 +1,4 @@
 <?php
-
 namespace Boitata\Http\Middleware;
 
 use Illuminate\Http\Request;
@@ -10,7 +9,7 @@ use TestCase;
 /**
  * Test case for no-cache filter.
  */
-class NoCache extends TestCase
+class NoCacheTest extends TestCase
 {
     public function testHandleShouldSendNoCacheHeader()
     {

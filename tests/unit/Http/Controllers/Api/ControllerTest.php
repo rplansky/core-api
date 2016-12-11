@@ -7,6 +7,8 @@ use TestCase;
 
 class ControllerTest extends TestCase
 {
+    use \WithFramework;
+
     public function testShouldRespondWithDefaultParameters()
     {
         // Set

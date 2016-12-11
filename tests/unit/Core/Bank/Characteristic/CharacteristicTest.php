@@ -2,7 +2,7 @@
 
 namespace Boitata\Core\Bank\Characteristic;
 
-class CharacteristicTest extends \PHPUnit_Framework_TestCase
+class CharacteristicTest extends \TestCase
 {
     public function testCharacteristicShouldBeEmbeddedDocument()
     {

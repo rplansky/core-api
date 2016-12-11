@@ -9,6 +9,8 @@ use TestCase;
 
 class ApiDocumentationTest extends TestCase
 {
+    use \WithFramework;
+
     public function testShouldHandleCommandWithSuccess()
     {
         // Set

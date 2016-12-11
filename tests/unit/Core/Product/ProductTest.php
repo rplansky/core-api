@@ -6,8 +6,9 @@ use ArrayIterator;
 use Boitata\Core\Bank\Characteristic\Characteristic;
 use Mockery as m;
 use PHPUnit_Framework_TestCase;
+use TestCase;
 
-class ProductTest extends PHPUnit_Framework_TestCase
+class ProductTest extends TestCase
 {
     public function testProductShouldHaveCharacteristics()
     {

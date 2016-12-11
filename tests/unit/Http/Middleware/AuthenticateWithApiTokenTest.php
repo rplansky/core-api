@@ -8,6 +8,8 @@ use TestCase;
 
 class AuthenticateWithApiTokenTest extends TestCase
 {
+    use \WithFramework;
+
     /**
      * @dataProvider getWrongAuthHeaders
      */

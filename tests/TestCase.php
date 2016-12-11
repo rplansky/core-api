@@ -10,6 +10,20 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     protected $baseUrl = 'http://localhost';
 
     /**
+     * Setup test suite before to run.
+     */
+    protected function setUp()
+    {
+        $uses = class_uses($this);
+
+        if (array_get($uses, 'WithFramework')) {
+            parent::setUp();
+        }
+
+        return;
+    }
+
+    /**
      * Creates the application.
      *
      * @return \Illuminate\Foundation\Application

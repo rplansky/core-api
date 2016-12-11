@@ -9,6 +9,8 @@ use TestCase;
 
 class CorsServiceTest extends TestCase
 {
+    use \WithFramework;
+
     public function setUp()
     {
         parent::setUp();

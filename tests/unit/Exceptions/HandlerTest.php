@@ -9,6 +9,8 @@ use TestCase;
 
 class HandlerTest extends TestCase
 {
+    use \WithFramework;
+
     public function testShouldAddCorsToApiRequests()
     {
         $request = m::mock(Request::class.'[is]');
