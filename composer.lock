@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "aa3075eee2eac7f946d82700c8eb65c3",
-    "content-hash": "49666137b77e2dc875e602df33ca54cd",
+    "hash": "e5cf105d485dc7491f4a7cab4c200953",
+    "content-hash": "5bda8e8f10392a1e2ef0dac5b0196ecb",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -516,6 +516,191 @@
                 "storage"
             ],
             "time": "2016-10-19 20:38:46"
+        },
+        {
+            "name": "leroy-merlin-br/mongolid",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leroy-merlin-br/mongolid.git",
+                "reference": "470cf53d9e2c75bab632d5e5ce4e81f850a26f8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leroy-merlin-br/mongolid/zipball/470cf53d9e2c75bab632d5e5ce4e81f850a26f8a",
+                "reference": "470cf53d9e2c75bab632d5e5ce4e81f850a26f8a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "^5.0",
+                "mongodb/mongodb": "^1.0",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9",
+                "phpunit/phpunit": "^5.0",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "v2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mongolid\\": "src/Mongolid"
+                },
+                "classmap": [
+                    "tests/TestCase.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Guitte",
+                    "email": "guilherme.guitte@gmail.com"
+                },
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
+                }
+            ],
+            "description": "Easy, powerful and ultrafast ODM for PHP and MongoDB.",
+            "keywords": [
+                "mongodb",
+                "nosql",
+                "odm"
+            ],
+            "time": "2016-09-22 11:38:52"
+        },
+        {
+            "name": "leroy-merlin-br/mongolid-laravel",
+            "version": "dev-laravel53",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leroy-merlin-br/mongolid-laravel.git",
+                "reference": "a2dd4b909226fb6928c81ada68343e64e3d3559e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leroy-merlin-br/mongolid-laravel/zipball/a2dd4b909226fb6928c81ada68343e64e3d3559e",
+                "reference": "a2dd4b909226fb6928c81ada68343e64e3d3559e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "5.3.*",
+                "illuminate/support": "5.3.*",
+                "leroy-merlin-br/mongolid": "2.0.x-dev",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9",
+                "orchestra/testbench": "3.1.*",
+                "phpunit/phpunit": "^5.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "v2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MongolidLaravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Guitte",
+                    "email": "guilherme.guitte@gmail.com"
+                },
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
+                }
+            ],
+            "description": "Easy, powerful and ultrafast MongoDB ODM for Laravel.",
+            "keywords": [
+                "illuminate",
+                "laravel",
+                "mongodb",
+                "nosql",
+                "odm"
+            ],
+            "time": "2016-12-11 09:36:22"
+        },
+        {
+            "name": "mongodb/mongodb",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mongodb/mongo-php-library.git",
+                "reference": "9dfb2c5fc917d7438b44eb8f4d247ba3e3984e75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/9dfb2c5fc917d7438b44eb8f4d247ba3e3984e75",
+                "reference": "9dfb2c5fc917d7438b44eb8f4d247ba3e3984e75",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mongodb": "^1.2.0",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MongoDB\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Mikola",
+                    "email": "jmikola@gmail.com"
+                },
+                {
+                    "name": "Hannes Magnusson",
+                    "email": "bjori@mongodb.com"
+                },
+                {
+                    "name": "Derick Rethans",
+                    "email": "github@derickrethans.nl"
+                }
+            ],
+            "description": "MongoDB driver library",
+            "homepage": "https://jira.mongodb.org/browse/PHPLIB",
+            "keywords": [
+                "database",
+                "driver",
+                "mongodb",
+                "persistence"
+            ],
+            "time": "2016-12-06 14:54:33"
         },
         {
             "name": "monolog/monolog",
@@ -3940,7 +4125,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "leroy-merlin-br/mongolid-laravel": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
