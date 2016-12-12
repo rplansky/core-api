@@ -4,6 +4,7 @@ namespace Boitata\Http\Controllers\Api\V1;
 use Boitata\Core\Product\Repository;
 use Boitata\Http\Controllers\Api\Controller;
 use Boitata\Http\Controllers\Api\Transformers\Product as Transformer;
+use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
@@ -31,5 +32,16 @@ class ProductsController extends Controller
         $product = $this->repository->firstOrFail($id);
 
         return $this->respond($transformer->transform($product));
+    }
+
+    public function create(Request $request)
+    {
+        $product = $this->repository->create($request->all());
+
+        if ($product->errors()->count()) {
+            return $this->respondWithErrors($product->errors()->all(), 422);
+        }
+
+        return $this->respond(['success' => true, 'errors' => []], 201);
     }
 }

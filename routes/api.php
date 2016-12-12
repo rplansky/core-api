@@ -22,6 +22,7 @@ Route::group(
             Route::get('/documentation', 'IndexController@documentation');
 
             Route::get('/product/{id}', 'ProductsController@show');
+            Route::post('/product', 'ProductsController@create');
         });
 
         Route::any('/', 'IndexController@root');

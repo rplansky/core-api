@@ -19,4 +19,20 @@ class Repository
     {
         return Product::firstOrFail(['_id' => $id]);
     }
+
+    /**
+     * Persist product at db.
+     *
+     * @param $attributes
+     * @return \Illuminate\Foundation\Application|mixed
+     */
+    public function create($attributes)
+    {
+        $product = app(Product::class);
+        $product->fill($attributes);
+
+        $product->save();
+
+        return $product;
+    }
 }
