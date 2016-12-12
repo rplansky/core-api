@@ -19,10 +19,13 @@ class Product
      */
     public function transform(CoreProduct $product)
     {
+        $characteristicTransformer = app(Characteristic::class);
         $attributes = [];
 
         $attributes['name'] = $product->getName();
         $attributes['id'] = $product->getId();
+
+        $attributes['characteristics'] = $characteristicTransformer->transform($product);
 
         return $attributes;
     }
