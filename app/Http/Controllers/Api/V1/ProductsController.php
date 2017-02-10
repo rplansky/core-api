@@ -34,7 +34,11 @@ class ProductsController extends Controller
         return $this->respond($transformer->transform($product));
     }
 
-    public function create(Request $request)
+    /**
+     * @param Request $request
+     * @return \Boitata\Http\Controllers\Api\JsonResponse
+     */
+    public function store(Request $request)
     {
         $product = $this->repository->create($request->all());
 
